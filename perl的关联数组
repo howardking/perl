@@ -1,0 +1,53 @@
+关联数组，hash，哈希，散列
+1. 形式：%h=('a', 1, 'b', 2);
+   以%开头，与%h是不同的。()为空散列
+   %h=('a'=>1,'b'=>2);
+   %h=(a=>1, b=>2);
+   元素形式：$hash{'a'}
+
+   增加。赋值$h{'a'} = 1
+   删除：delete $h{$k}
+============================================================================
+2. 关联数组操作函数
+   keys(%h), values(%h): keys(%h)返回键列表，values(%h)返回值列表
+   each(%h)循环
+   ($key, $value) = each(%hash)取出键值对。
+   exists关键字是否存在：exists $h{'key'}
+   undef(%h): 删除散列，相当与%=();
+   delete
+
+   foreach $word (key(%list)){
+	last if($word == "second");
+   }
+
+   如果要保持顺序，用sort keys(%h);按字符串排序，如果按数字排序用sort{$a<=>$b}keys(%h);或用Tie::Hash模块
+
+   从值找键：1=>'first'     %hash=reverse%h 
+============================================================================
+3.关联数组模拟数据结构
+  (1)链表
+   %list = ("a", "b",
+                 "b", "c",
+                      "c", "");
+  $header = "a";
+  (2) 结构：
+  struct {int i, int j} s; s.i=1;=>%s=("i","","j","");$s{"i"}=1;
+  (3) 树
+  每项包含一个值，多个指针指向下一层。
+  $root = "parent";
+  %tree ("parentleft",  "child1",
+         "parentright", "child2",
+         "child1right", "grandchild1",
+         "child1right", "grandchild2",
+         "child2left",  "grandchild3",
+         "child2right", "grandchild4");
+   left,right通过字符连接生成。
+   (4)二维表(database):要包含索引字段
+    index    f2  f3
+      1       a   b
+      2       x   y
+===========================================================================
+4. 关联数组的符合结构简介
+   (1) 散列的数组
+
+  
